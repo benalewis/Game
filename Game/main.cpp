@@ -115,6 +115,13 @@ int main()
     -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
     -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
 };
+
+   glm::vec3 cubes[] = {
+	glm::vec3( 0.0f,  0.0f,  0.0f), 
+	glm::vec3( 3.0f,  1.0f, -2.5f), 
+	glm::vec3( -3.0f,  2.0f, -5.0f)
+   };
+
 	/*-----------VBO & VAO-----------*/
     GLuint VBO, VAO;
     glGenVertexArrays(1, &VAO);
@@ -197,7 +204,13 @@ int main()
 	
         // Draw container
         glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		for (GLuint i = 0; i < 3; i++)
+		{
+			glm::mat4 model;
+			model = glm::translate(model, cubes[i]);
+			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+			glDrawArrays(GL_TRIANGLES, 0, 36);
+		}
         glBindVertexArray(0);
 
         // Swap the screen buffers
