@@ -1,18 +1,18 @@
-﻿Build started 27/04/2015 17:48:31.
+﻿Build started 27/04/2015 19:10:24.
      1>Project "C:\Users\Ben\documents\visual studio 2012\Projects\Game\Game\Game.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /IC:\Users\Ben\Desktop\deps\sfml\include /IC:\Users\Ben\Desktop\deps\glfw\include /IC:\Users\Ben\Desktop\deps\glew\include /IC:\Users\Ben\Desktop\deps\glm /IC:\Users\Ben\Desktop\deps\soil\lib /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
      1>c:\users\ben\documents\visual studio 2012\projects\game\game\shader.h(44): warning C4101: 'e' : unreferenced local variable
-     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(164): warning C4244: 'initializing' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(270): warning C4244: '=' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(271): warning C4244: '=' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(275): warning C4244: 'initializing' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(276): warning C4244: 'initializing' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(277): warning C4244: '=' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(278): warning C4244: '=' : conversion from 'double' to 'GLfloat', possible loss of data
-     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(280): warning C4305: 'initializing' : truncation from 'double' to 'GLfloat'
-     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(283): warning C4305: 'initializing' : truncation from 'double' to 'GLfloat'
+     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(184): warning C4244: 'initializing' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(299): warning C4244: '=' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(300): warning C4244: '=' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(304): warning C4244: 'initializing' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(305): warning C4244: 'initializing' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(306): warning C4244: '=' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(307): warning C4244: '=' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(309): warning C4305: 'initializing' : truncation from 'double' to 'GLfloat'
+     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(312): warning C4305: 'initializing' : truncation from 'double' to 'GLfloat'
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Ben\documents\visual studio 2012\Projects\Game\Debug\Game.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\Ben\Desktop\deps\sfml\lib /LIBPATH:C:\Users\Ben\Desktop\deps\glew\lib /LIBPATH:"C:\Users\Ben\Desktop\deps\glfw\lib-vc2012" /LIBPATH:C:\Users\Ben\Desktop\deps\soil\lib opengl32.lib glu32.lib glew32.lib glfw3.lib SOIL.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Ben\documents\visual studio 2012\Projects\Game\Debug\Game.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Ben\documents\visual studio 2012\Projects\Game\Debug\Game.lib" /MACHINE:X86 Debug\main.obj
          Game.vcxproj -> C:\Users\Ben\documents\visual studio 2012\Projects\Game\Debug\Game.exe
@@ -20,4 +20,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.40
+Time Elapsed 00:00:01.39

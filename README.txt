@@ -12,12 +12,13 @@ SOIL (Image Loading) http://www.lonesock.net/soil.html
 Ben Lewis 2015
 
 Semester 2 Goals
-
+x
 [X] 2 Cubes
 [X] 3 Cubes 
 [X] Checked with Cppcheck
 [X] All spinning in different directions
-[] Have 3 different textures
+[X] Have 2 different textures
+[-] Have 3 different textures (Suspended because kind of pointless)
 [] Camera in it's own class
 [] Working port on linux (Ubuntu, Fedora)
 [] Collision Detection with one block
