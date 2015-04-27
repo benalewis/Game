@@ -13,6 +13,7 @@ Ben Lewis 2015
 
 Semester 2 Goals
 
+[] 2 Cubes
 [] 3 Cubes 
 [] Checked with Cppcheck
 [] All spinning in different directions
