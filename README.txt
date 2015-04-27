@@ -13,9 +13,9 @@ Ben Lewis 2015
 
 Semester 2 Goals
 
-[] 2 Cubes
-[] 3 Cubes 
-[] Checked with Cppcheck
+[X] 2 Cubes
+[X] 3 Cubes 
+[X] Checked with Cppcheck
 [] All spinning in different directions
 [] Have 3 different textures
 [] Camera in it's own class
