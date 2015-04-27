@@ -208,6 +208,7 @@ int main()
 		{
 			glm::mat4 model;
 			model = glm::translate(model, cubes[i]);
+			model = glm::rotate(model, (GLfloat)glfwGetTime() * 2.0f, glm::vec3(i * 0.2f + 1.0, i * 3.0f, 0.0f));
 			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 		}

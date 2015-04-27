@@ -16,7 +16,7 @@ Semester 2 Goals
 [X] 2 Cubes
 [X] 3 Cubes 
 [X] Checked with Cppcheck
-[] All spinning in different directions
+[X] All spinning in different directions
 [] Have 3 different textures
 [] Camera in it's own class
 [] Working port on linux (Ubuntu, Fedora)
