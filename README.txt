@@ -21,7 +21,7 @@ Semester 2 Goals
 [-] Have 3 different textures (Suspended because kind of pointless)
 [X] Camera in it's own class
 [X] Create a floor with 1 texture
-[] Create walls with the other texture
+[X] Create walls with the other texture
 [] a simple "maze" built of about 20 ish blocks
 [] Collision Detection with one block
 [] Collision Detections with floors

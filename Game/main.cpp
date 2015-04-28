@@ -111,7 +111,6 @@ int main()
     -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
     -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
 };
-
    glm::vec3 floor[] = {
 	    //Row 1
 	glm::vec3( 0.0f,  0.0f, 0.0f), 
@@ -137,6 +136,54 @@ int main()
 	glm::vec3( 0.0f,  0.0f, 5.0f), 
 	glm::vec3( 1.0f,  0.0f, 5.0f), 
 	glm::vec3( 2.0f,  0.0f, 5.0f) 
+   };
+
+   glm::vec3 sideWalls[] = {
+	   //Left Wall
+	   glm::vec3(-1.0f, 0.0f, 0.0f),
+	   glm::vec3(-1.0f, 0.0f, 1.0f),
+	   glm::vec3(-1.0f, 0.0f, 2.0f),
+	   glm::vec3(-1.0f, 0.0f, 3.0f),
+	   glm::vec3(-1.0f, 0.0f, 4.0f),
+	   //Right Wall
+	   glm::vec3(3.0f, 0.0f, 0.0f),
+	   glm::vec3(3.0f, 0.0f, 1.0f),
+	   glm::vec3(3.0f, 0.0f, 2.0f),
+	   glm::vec3(3.0f, 0.0f, 3.0f),
+	   glm::vec3(3.0f, 0.0f, 4.0f)
+   };
+
+  glm::vec3 backWall[] = {
+	   //First Story
+	   glm::vec3(-1.0f, 0.0f, -1.0f),
+	   glm::vec3(0.0f, 0.0f, -1.0f),
+	   glm::vec3(1.0f, 0.0f, -1.0f),
+	   glm::vec3(2.0f, 0.0f, -1.0f),
+	   glm::vec3(3.0f, 0.0f, -1.0f),
+	   //Second Story
+	   glm::vec3(-1.0f, 1.0f, -1.0f),
+	   glm::vec3(0.0f, 1.0f, -1.0f),
+	   glm::vec3(1.0f, 1.0f, -1.0f),
+	   glm::vec3(2.0f, 1.0f, -1.0f),
+	   glm::vec3(3.0f, 1.0f, -1.0f),
+	   //Third Story
+	   glm::vec3(-1.0f, 2.0f, -1.0f),
+	   glm::vec3(0.0f, 2.0f, -1.0f),
+	   glm::vec3(1.0f, 2.0f, -1.0f),
+	   glm::vec3(2.0f, 2.0f, -1.0f),
+	   glm::vec3(3.0f, 2.0f, -1.0f),
+	   //Fourth Story
+	   glm::vec3(-1.0f, 3.0f, -1.0f),
+	   glm::vec3(0.0f, 3.0f, -1.0f),
+	   glm::vec3(1.0f, 3.0f, -1.0f),
+	   glm::vec3(2.0f, 3.0f, -1.0f),
+	   glm::vec3(3.0f, 3.0f, -1.0f),
+	   //Roof
+	   glm::vec3(-1.0f, 4.0f, -1.0f),
+	   glm::vec3(0.0f, 4.0f, -1.0f),
+	   glm::vec3(1.0f, 4.0f, -1.0f),
+	   glm::vec3(2.0f, 4.0f, -1.0f),
+	   glm::vec3(3.0f, 4.0f, -1.0f)
    };
 
 	/*-----------VBO & VAO-----------*/
@@ -235,17 +282,39 @@ int main()
 
 		glBindVertexArray(VAO);
 		/*--------Drawing---------*/
-		// Bind Floor texture using texture units
+		// Bind Wall texture using texture units
 		glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, texture1);
+        glUniform1i(glGetUniformLocation(shaderProgram.Program, "Texture"), 0);
+		
+        // Draw Side Walls
+		for (GLuint i = 0; i < 10; i++)
+		{
+			glm::mat4 wallModel;
+			wallModel = glm::translate(wallModel, sideWalls[i]);
+			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(wallModel));
+			glDrawArrays(GL_TRIANGLES, 0, 36);
+		}
+		
+		// Draw Back Wall
+		for (GLuint i = 0; i < 25; i++)
+		{
+			glm::mat4 backModel;
+			backModel = glm::translate(backModel, backWall[i]);
+			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(backModel));
+			glDrawArrays(GL_TRIANGLES, 0, 36);
+		}
+
+		// Bind Floor texture using texture units
         glBindTexture(GL_TEXTURE_2D, texture2);
         glUniform1i(glGetUniformLocation(shaderProgram.Program, "Texture"), 0);
 		
         // Draw Floor
 		for (GLuint i = 0; i < 15; i++)
 		{
-			glm::mat4 model;
-			model = glm::translate(model, floor[i]);
-			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+			glm::mat4 floorModel;
+			floorModel = glm::translate(floorModel, floor[i]);
+			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(floorModel));
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 		}
 
