@@ -18,7 +18,7 @@ Semester 2 Goals
 [X] Checked with Cppcheck
 [X] All spinning in different directions
 [X] Have 2 different textures
-[-] Have 3 different textures (Suspended because kind of pointless)
+[X] Have 3 different textures (Suspended because kind of pointless)
 [X] Camera in it's own class
 [X] Create a floor with 1 texture
 [X] Create walls with the other texture
