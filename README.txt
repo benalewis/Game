@@ -20,12 +20,13 @@ Semester 2 Goals
 [X] Have 2 different textures
 [-] Have 3 different textures (Suspended because kind of pointless)
 [X] Camera in it's own class
-[] Create a floor with 1 texture
+[X] Create a floor with 1 texture
 [] Create walls with the other texture
 [] a simple "maze" built of about 20 ish blocks
 [] Collision Detection with one block
 [] Collision Detections with floors
 [] Collision Detections with walls
 [] "Ice movement"
-[] Collectable & end game screen
+[] Collectable
+[] End game screen
 [] Working port on linux (Ubuntu, Fedora)

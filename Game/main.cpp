@@ -112,10 +112,31 @@ int main()
     -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
 };
 
-   glm::vec3 cubes[] = {
-	glm::vec3( 0.0f,  0.0f,  0.0f), 
-	glm::vec3( 3.0f,  1.0f, -2.5f), 
-	glm::vec3( -3.0f,  2.0f, -5.0f)
+   glm::vec3 floor[] = {
+	    //Row 1
+	glm::vec3( 0.0f,  0.0f, 0.0f), 
+	glm::vec3( 1.0f,  0.0f, 0.0f), 
+	glm::vec3( 2.0f,  0.0f, 0.0f), 
+		//Row 2
+	glm::vec3( 0.0f,  0.0f, 1.0f), 
+	glm::vec3( 1.0f,  0.0f, 1.0f), 
+	glm::vec3( 2.0f,  0.0f, 1.0f),
+		//Row 3
+	glm::vec3( 0.0f,  0.0f, 2.0f), 
+	glm::vec3( 1.0f,  0.0f, 2.0f), 
+	glm::vec3( 2.0f,  0.0f, 2.0f), 
+		//Row 4
+	glm::vec3( 0.0f,  0.0f, 3.0f), 
+	glm::vec3( 1.0f,  0.0f, 3.0f), 
+	glm::vec3( 2.0f,  0.0f, 3.0f), 
+		//Row 5
+	glm::vec3( 0.0f,  0.0f, 4.0f), 
+	glm::vec3( 1.0f,  0.0f, 4.0f), 
+	glm::vec3( 2.0f,  0.0f, 4.0f),
+		//Row 6
+	glm::vec3( 0.0f,  0.0f, 5.0f), 
+	glm::vec3( 1.0f,  0.0f, 5.0f), 
+	glm::vec3( 2.0f,  0.0f, 5.0f) 
    };
 
 	/*-----------VBO & VAO-----------*/
@@ -199,8 +220,7 @@ int main()
 		glm::mat4 model; //Model view matrix
 		glm::mat4 projection; //Projection matrix
 
-		model = glm::rotate(model, (GLfloat)glfwGetTime() * 1.0f, glm::vec3(1.0f, 0.2f, 0.0f)); //rotate around the x axis by -55*
-		view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f)); //camera view further away on the z axis
+		view = glm::translate(view, glm::vec3(-1.0f, -1.5f, -3.0f)); //camera start point
 		projection = glm::perspective(45.0f, (GLfloat)WIDTH / (GLfloat)HEIGHT, 0.1f, 100.0f); //projection perspective
 
 		//Get Uniform locations from the shader program
@@ -215,25 +235,16 @@ int main()
 
 		glBindVertexArray(VAO);
 		/*--------Drawing---------*/
-
-		// Texture 1
+		// Bind Floor texture using texture units
 		glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, texture1);
-        glUniform1i(glGetUniformLocation(shaderProgram.Program, "Texture"), 0);
-		
-		//Draw Container 1
-		glDrawArrays(GL_TRIANGLES, 0, 36);
-
-		// Bind Texture 2 using texture units
         glBindTexture(GL_TEXTURE_2D, texture2);
         glUniform1i(glGetUniformLocation(shaderProgram.Program, "Texture"), 0);
 		
-        // Draw Containers 2-3
-		for (GLuint i = 1; i < 3; i++)
+        // Draw Floor
+		for (GLuint i = 0; i < 15; i++)
 		{
 			glm::mat4 model;
-			model = glm::translate(model, cubes[i]);
-			model = glm::rotate(model, (GLfloat)glfwGetTime() * 2.0f, glm::vec3(i * 0.2f + 1.0, i * 3.0f, 0.0f));
+			model = glm::translate(model, floor[i]);
 			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 		}
