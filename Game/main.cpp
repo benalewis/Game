@@ -47,7 +47,7 @@ int main()
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
     // GLFW Window & Current Context Set
-    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "3D Open GL Game", nullptr, nullptr);
+    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Ice Maze", nullptr, nullptr);
     glfwMakeContextCurrent(window);
 
     // Callback Functions
@@ -139,18 +139,67 @@ int main()
    };
 
    glm::vec3 sideWalls[] = {
-	   //Left Wall
+	   //Left Wall 1st Story
 	   glm::vec3(-1.0f, 0.0f, 0.0f),
 	   glm::vec3(-1.0f, 0.0f, 1.0f),
 	   glm::vec3(-1.0f, 0.0f, 2.0f),
 	   glm::vec3(-1.0f, 0.0f, 3.0f),
 	   glm::vec3(-1.0f, 0.0f, 4.0f),
-	   //Right Wall
+	   //Left Wall 2nd Story
+	   glm::vec3(-1.0f, 1.0f, 0.0f),
+	   glm::vec3(-1.0f, 1.0f, 1.0f),
+	   glm::vec3(-1.0f, 1.0f, 2.0f),
+	   glm::vec3(-1.0f, 1.0f, 3.0f),
+	   glm::vec3(-1.0f, 1.0f, 4.0f),
+	   //Left Wall 3rd Story
+	   glm::vec3(-1.0f, 2.0f, 0.0f),
+	   glm::vec3(-1.0f, 2.0f, 1.0f),
+	   glm::vec3(-1.0f, 2.0f, 2.0f),
+	   glm::vec3(-1.0f, 2.0f, 3.0f),
+	   glm::vec3(-1.0f, 2.0f, 4.0f),
+	   //Left Wall 4th Story
+	   glm::vec3(-1.0f, 3.0f, 0.0f),
+	   glm::vec3(-1.0f, 3.0f, 1.0f),
+	   glm::vec3(-1.0f, 3.0f, 2.0f),
+	   glm::vec3(-1.0f, 3.0f, 3.0f),
+	   glm::vec3(-1.0f, 3.0f, 4.0f),
+	   //Left Wall 5th Story
+	   glm::vec3(-1.0f, 4.0f, 0.0f),
+	   glm::vec3(-1.0f, 4.0f, 1.0f),
+	   glm::vec3(-1.0f, 4.0f, 2.0f),
+	   glm::vec3(-1.0f, 4.0f, 3.0f),
+	   glm::vec3(-1.0f, 4.0f, 4.0f),
+
+	   //Right Wall 1st Story
 	   glm::vec3(3.0f, 0.0f, 0.0f),
 	   glm::vec3(3.0f, 0.0f, 1.0f),
 	   glm::vec3(3.0f, 0.0f, 2.0f),
 	   glm::vec3(3.0f, 0.0f, 3.0f),
-	   glm::vec3(3.0f, 0.0f, 4.0f)
+	   glm::vec3(3.0f, 0.0f, 4.0f),
+	   //Right Wall 1st Story
+	   glm::vec3(3.0f, 1.0f, 0.0f),
+	   glm::vec3(3.0f, 1.0f, 1.0f),
+	   glm::vec3(3.0f, 1.0f, 2.0f),
+	   glm::vec3(3.0f, 1.0f, 3.0f),
+	   glm::vec3(3.0f, 1.0f, 4.0f),
+	   //Right Wall 1st Story
+	   glm::vec3(3.0f, 2.0f, 0.0f),
+	   glm::vec3(3.0f, 2.0f, 1.0f),
+	   glm::vec3(3.0f, 2.0f, 2.0f),
+	   glm::vec3(3.0f, 2.0f, 3.0f),
+	   glm::vec3(3.0f, 2.0f, 4.0f),
+	   //Right Wall 1st Story
+	   glm::vec3(3.0f, 3.0f, 0.0f),
+	   glm::vec3(3.0f, 3.0f, 1.0f),
+	   glm::vec3(3.0f, 3.0f, 2.0f),
+	   glm::vec3(3.0f, 3.0f, 3.0f),
+	   glm::vec3(3.0f, 3.0f, 4.0f),
+	   //Right Wall 1st Story
+	   glm::vec3(3.0f, 4.0f, 0.0f),
+	   glm::vec3(3.0f, 4.0f, 1.0f),
+	   glm::vec3(3.0f, 4.0f, 2.0f),
+	   glm::vec3(3.0f, 4.0f, 3.0f),
+	   glm::vec3(3.0f, 4.0f, 4.0f),
    };
 
   glm::vec3 backWall[] = {
@@ -186,6 +235,10 @@ int main()
 	   glm::vec3(3.0f, 4.0f, -1.0f)
    };
 
+  glm::vec3 collectable[] = {
+		glm::vec3(1.0f, 2.0f, -0.5f),
+  };
+
 	/*-----------VBO & VAO-----------*/
     GLuint VBO, VAO;
     glGenVertexArrays(1, &VAO);
@@ -217,7 +270,7 @@ int main()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     // Load, create texture and generate mipmaps
     int width, height;
-    unsigned char* image1 = SOIL_load_image("Textures/box1.jpg", &width, &height, 0, SOIL_LOAD_RGB);
+    unsigned char* image1 = SOIL_load_image("Textures/icewall.jpg", &width, &height, 0, SOIL_LOAD_RGB);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image1);
     glGenerateMipmap(GL_TEXTURE_2D);
     SOIL_free_image_data(image1);
@@ -235,10 +288,28 @@ int main()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);  //Mipmapping
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     // Load, create texture and generate mipmaps
-    unsigned char* image2 = SOIL_load_image("Textures/box2.jpg", &width, &height, 0, SOIL_LOAD_RGB);
+    unsigned char* image2 = SOIL_load_image("Textures/icefloor.jpg", &width, &height, 0, SOIL_LOAD_RGB);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image2);
     glGenerateMipmap(GL_TEXTURE_2D);
     SOIL_free_image_data(image2);
+	glBindTexture(GL_TEXTURE_2D, 0); // Unbind texture 
+
+	//Texture 3
+    GLuint texture3;
+    glGenTextures(1, &texture3);
+	glActiveTexture(GL_TEXTURE2); //Activate Texture (0) before binding
+    glBindTexture(GL_TEXTURE_2D, texture3); 
+    // Texture parameters
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// Set texture wrapping to GL_REPEAT
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    // Texture filtering
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);  //Mipmapping
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    // Load, create texture and generate mipmaps
+    unsigned char* image3 = SOIL_load_image("Textures/collectable.jpg", &width, &height, 0, SOIL_LOAD_RGB);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image3);
+    glGenerateMipmap(GL_TEXTURE_2D);
+    SOIL_free_image_data(image3);
 	glBindTexture(GL_TEXTURE_2D, 0); // Unbind texture 
 
     /*-----------Game Loop-----------*/
@@ -288,7 +359,7 @@ int main()
         glUniform1i(glGetUniformLocation(shaderProgram.Program, "Texture"), 0);
 		
         // Draw Side Walls
-		for (GLuint i = 0; i < 10; i++)
+		for (GLuint i = 0; i < 50; i++)
 		{
 			glm::mat4 wallModel;
 			wallModel = glm::translate(wallModel, sideWalls[i]);
@@ -315,6 +386,17 @@ int main()
 			glm::mat4 floorModel;
 			floorModel = glm::translate(floorModel, floor[i]);
 			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(floorModel));
+			glDrawArrays(GL_TRIANGLES, 0, 36);
+		}
+
+		// Draw Collectable(s)
+		glBindTexture(GL_TEXTURE_2D, texture3);
+        glUniform1i(glGetUniformLocation(shaderProgram.Program, "Texture"), 0);
+		for (GLuint i = 0; i < 1; i++)
+		{
+			glm::mat4 collectMe;
+			collectMe = glm::translate(collectMe, collectable[i]);
+			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(collectMe));
 			glDrawArrays(GL_TRIANGLES, 0, 36);
 		}
 
