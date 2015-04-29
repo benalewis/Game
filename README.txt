@@ -29,7 +29,7 @@ Semester 2 Goals
 [X] Collision Detections with walls
 [X] "Ice movement"
 [X] Maze built 
-[X] Objects added to avoid (WALLS)
+[X] Objects added to avoid
 [] End game win/loss screen added
 [] Working port on linux (Ubuntu, Fedora)
-[] Bug fixes and documentation 10%
+[] Bug fixes and documentation
