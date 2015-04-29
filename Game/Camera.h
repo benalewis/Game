@@ -8,8 +8,6 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "Collision.h"
-
 // WASD Enum
 enum Camera_Movement {
     W,
@@ -40,9 +38,14 @@ public:
     // Camera Sensitivity
     GLfloat MovementSpeed;
     GLfloat MouseSensitivity;
+	// Ice Movement
+	GLfloat WIce;
+	GLfloat SIce;
+	GLfloat AIce;
+	GLfloat DIce;
 
     // Constructor
-    Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f),
+    Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f),
 		GLfloat yaw = YAW, GLfloat pitch = PITCH) : Front(glm::vec3(0.0f, 0.0f, -1.0f)), MovementSpeed(SPEED),
 		MouseSensitivity(SENSITIVTY)
     {
@@ -64,14 +67,30 @@ public:
     {
         GLfloat velocity = this->MovementSpeed * deltaTime;
 		if (direction == W)
-            this->Position += this->Front * velocity;
-        if (direction == S)
-            this->Position -= this->Front * velocity;
+			WIce++;
+		{
+		if (SIce < 0) {
+			SIce -= 2; }
+            this->Position += this->Front * velocity * WIce * 0.01f;
+		}
+        if (direction == S) 
+			SIce++;
+		{
+			if (WIce < 0) {
+			WIce -= 2; }
+            this->Position -= this->Front * velocity * SIce * 0.01f;
         if (direction == A)
-            this->Position -= this->Right * velocity;
+			AIce++;
+			if (DIce < 0) {
+			DIce -= 2; }
+            this->Position -= this->Right * velocity * AIce * 0.01f;
         if (direction == D)
-            this->Position += this->Right * velocity;
+			DIce++;
+			if (AIce < 0) {
+			AIce -= 2; }
+            this->Position += this->Right * velocity * DIce * 0.01f;
     }
+	}
 
     // Processes input from mouse
     void ProcessMouseMovement(GLfloat xoffset, GLfloat yoffset, GLboolean constrainPitch = true)
@@ -112,8 +131,7 @@ void ProcessCollision(glm::vec3 currentPosition)
 
 		if (currentPosition.z < -3.0f)
 			this->Position.z = -3.0f;
-	}
-
+}
 
 private:
     // Updates camera total

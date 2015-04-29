@@ -28,6 +28,6 @@ Semester 2 Goals
 [X] Collision Detections with floors
 [X] Collision Detections with walls
 [] Collectable Dissapears after contact
-[] "Ice movement"
+[X] "Ice movement"
 [] End game screen
 [] Working port on linux (Ubuntu, Fedora)

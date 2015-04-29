@@ -1,10 +1,10 @@
-﻿Build started 29/04/2015 17:33:14.
+﻿Build started 29/04/2015 19:30:12.
      1>Project "C:\Users\Ben\documents\visual studio 2012\Projects\Game\Game\Game.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /IC:\Users\Ben\Desktop\deps\sfml\include /IC:\Users\Ben\Desktop\deps\glfw\include /IC:\Users\Ben\Desktop\deps\glew\include /IC:\Users\Ben\Desktop\deps\glm /IC:\Users\Ben\Desktop\deps\soil\lib /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
          main.cpp
      1>c:\users\ben\documents\visual studio 2012\projects\game\game\shader.h(44): warning C4101: 'e' : unreferenced local variable
-     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(319): warning C4244: 'initializing' : conversion from 'double' to 'GLfloat', possible loss of data
+     1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(321): warning C4244: 'initializing' : conversion from 'double' to 'GLfloat', possible loss of data
      1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(459): warning C4244: '=' : conversion from 'double' to 'GLfloat', possible loss of data
      1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(460): warning C4244: '=' : conversion from 'double' to 'GLfloat', possible loss of data
      1>c:\users\ben\documents\visual studio 2012\projects\game\game\main.cpp(464): warning C4244: 'initializing' : conversion from 'double' to 'GLfloat', possible loss of data
@@ -18,4 +18,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.81
+Time Elapsed 00:00:01.72

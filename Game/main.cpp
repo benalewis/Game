@@ -17,7 +17,6 @@
 // Other includes
 #include "Shader.h"
 #include "Camera.h"
-#include "Collision.h"
 
 /*-----------Function Declarations-----------*/
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
@@ -37,6 +36,7 @@ bool firstMouse = true;
 /*-----------Time Globals-----------*/
 GLfloat deltaTime = 0.0f;	// Time between current frame and last frame
 GLfloat lastFrame = 0.0f;  	// Time of last frame
+
 
 int main()
 {
@@ -240,6 +240,7 @@ int main()
 		glm::vec3(1.0f, 2.0f, -0.5f),
   };
 
+
 	/*-----------VBO & VAO-----------*/
     GLuint VBO, VAO;
     glGenVertexArrays(1, &VAO);
@@ -324,8 +325,6 @@ int main()
         // Event checks and movement checks
         glfwPollEvents();
 		do_move();
-	
-		//Collision Here
 		
         /*-----------Render-----------*/
 		glEnable(GL_DEPTH_TEST); //Enable depth testing
@@ -393,17 +392,17 @@ int main()
 		}
 
 		// Draw Collectable(s)
-		glBindTexture(GL_TEXTURE_2D, texture3);
-        glUniform1i(glGetUniformLocation(shaderProgram.Program, "Texture"), 0);
-		for (GLuint i = 0; i < 1; i++)
-		{
-			glm::mat4 collectMe;
-			collectMe = glm::translate(collectMe, collectable[i]);
-			collectMe = glm::rotate(collectMe,(GLfloat)glfwGetTime() * 4.0f, glm::vec3(0.0f, 0.0f, 1.0f));
-			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(collectMe));
-			glDrawArrays(GL_TRIANGLES, 0, 36);
-		}
-
+		
+			glBindTexture(GL_TEXTURE_2D, texture3);
+			glUniform1i(glGetUniformLocation(shaderProgram.Program, "Texture"), 0);
+			for (GLuint i = 0; i < 1; i++)
+			{
+				glm::mat4 collectMe;
+				collectMe = glm::translate(collectMe, collectable[i]);
+				collectMe = glm::rotate(collectMe,(GLfloat)glfwGetTime() * 4.0f, glm::vec3(0.0f, 0.0f, 1.0f));
+				glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(collectMe));
+				glDrawArrays(GL_TRIANGLES, 0, 36);
+			}
         glBindVertexArray(0);
         // Swap the screen buffers
         glfwSwapBuffers(window);
@@ -450,7 +449,7 @@ void do_move()
 		cout << "D" << endl; }
 
 	camera.ProcessCollision(camera.Position);
-};
+}
 
 	/*-----------Mouse Movement (Using Eular)-----------*/
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
