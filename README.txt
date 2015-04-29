@@ -24,9 +24,9 @@ Semester 2 Goals
 [X] Create walls with the other texture
 [X] a simple "maze" built of about 20 ish blocks
 [X] Collectable
-[] Collision Detection with one block
-[] Collision Detections with floors
-[] Collision Detections with walls
+[X] Collision Detection with one block
+[X] Collision Detections with floors
+[X] Collision Detections with walls
 [] Collectable Dissapears after contact
 [] "Ice movement"
 [] End game screen

@@ -17,6 +17,7 @@
 // Other includes
 #include "Shader.h"
 #include "Camera.h"
+#include "Collision.h"
 
 /*-----------Function Declarations-----------*/
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
@@ -323,7 +324,9 @@ int main()
         // Event checks and movement checks
         glfwPollEvents();
 		do_move();
-
+	
+		//Collision Here
+		
         /*-----------Render-----------*/
 		glEnable(GL_DEPTH_TEST); //Enable depth testing
         glClearColor(0.250f, 0.286f, 0.509f, 1.0f);
@@ -445,6 +448,8 @@ void do_move()
 	if (keys[GLFW_KEY_D]) {
         camera.ProcessKeyboard(D, deltaTime);
 		cout << "D" << endl; }
+
+	camera.ProcessCollision(camera.Position);
 };
 
 	/*-----------Mouse Movement (Using Eular)-----------*/

@@ -8,6 +8,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include "Collision.h"
+
 // WASD Enum
 enum Camera_Movement {
     W,
@@ -61,7 +63,7 @@ public:
     void ProcessKeyboard(Camera_Movement direction, GLfloat deltaTime)
     {
         GLfloat velocity = this->MovementSpeed * deltaTime;
-        if (direction == W)
+		if (direction == W)
             this->Position += this->Front * velocity;
         if (direction == S)
             this->Position -= this->Front * velocity;
@@ -93,6 +95,26 @@ public:
         this->updateCameraVectors();
     }
 
+	
+void ProcessCollision(glm::vec3 currentPosition)
+	{
+		if (currentPosition.x < -1.0f)
+			this->Position.x = -1.0f;
+
+		if (currentPosition.x > 1.0f)
+			this->Position.x = 1.0f;
+
+		if (currentPosition.y > 2.0f)
+			this->Position.y = 2.0f;
+
+		if (currentPosition.y < -0.5f)
+			this->Position.y = -0.5f;
+
+		if (currentPosition.z < -3.0f)
+			this->Position.z = -3.0f;
+	}
+
+
 private:
     // Updates camera total
     void updateCameraVectors()
@@ -106,5 +128,5 @@ private:
         // Also re-calculate the Right and Up vector
         this->Right = glm::normalize(glm::cross(this->Front, this->WorldUp)); 
         this->Up    = glm::normalize(glm::cross(this->Right, this->Front));
-    }
+	}
 };
