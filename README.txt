@@ -27,7 +27,9 @@ Semester 2 Goals
 [X] Collision Detection with one block
 [X] Collision Detections with floors
 [X] Collision Detections with walls
-[] Collectable Dissapears after contact
 [X] "Ice movement"
-[] End game screen
+[X] Maze built 
+[X] Objects added to avoid (WALLS)
+[] End game win/loss screen added
 [] Working port on linux (Ubuntu, Fedora)
+[] Bug fixes and documentation 10%

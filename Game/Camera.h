@@ -66,32 +66,27 @@ public:
     void ProcessKeyboard(Camera_Movement direction, GLfloat deltaTime)
     {
         GLfloat velocity = this->MovementSpeed * deltaTime;
-		if (direction == W)
-			WIce++;
-		{
-		if (SIce < 0) {
-			SIce -= 2; }
-            this->Position += this->Front * velocity * WIce * 0.01f;
-		}
-        if (direction == S) 
-			SIce++;
-		{
-			if (WIce < 0) {
-			WIce -= 2; }
-            this->Position -= this->Front * velocity * SIce * 0.01f;
-        if (direction == A)
-			AIce++;
-			if (DIce < 0) {
-			DIce -= 2; }
-            this->Position -= this->Right * velocity * AIce * 0.01f;
-        if (direction == D)
-			DIce++;
-			if (AIce < 0) {
-			AIce -= 2; }
-            this->Position += this->Right * velocity * DIce * 0.01f;
-    }
-	}
+		if (direction == W) {
+			WIce += 0.01; 
+			if (SIce < 0) {SIce -= 0.02;}
+			this->Position += this->Front * velocity * WIce;}
 
+        if (direction == S) {
+			SIce += 0.01;
+			if (WIce < 0) {WIce -= 0.02;}
+			this->Position -= this->Front * velocity * SIce;}
+
+        if (direction == A) {
+			AIce += 0.01;
+			if (DIce < 0) {DIce -= 0.02;}
+			this->Position -= this->Right * velocity * AIce;}
+
+          if (direction == D) {
+			DIce += 0.01;
+			if (AIce < 0) {AIce -= 0.02;}
+			this->Position += this->Right * velocity * DIce;}
+    }
+	
     // Processes input from mouse
     void ProcessMouseMovement(GLfloat xoffset, GLfloat yoffset, GLboolean constrainPitch = true)
     {
@@ -117,20 +112,37 @@ public:
 	
 void ProcessCollision(glm::vec3 currentPosition)
 	{
-		if (currentPosition.x < -1.0f)
-			this->Position.x = -1.0f;
+		if (currentPosition.x < -1.0f) {
+			this->Position.x = 0.0f;
+			HitTheWall(); }
 
-		if (currentPosition.x > 1.0f)
-			this->Position.x = 1.0f;
+		if (currentPosition.x > 1.0f) {
+			this->Position.x = 0.0f;
+			HitTheWall(); }
 
-		if (currentPosition.y > 2.0f)
-			this->Position.y = 2.0f;
+		if (currentPosition.y > 2.0f) {
+			this->Position.y = 0.0f;
+			HitTheWall(); }
 
-		if (currentPosition.y < -0.5f)
-			this->Position.y = -0.5f;
+		if (currentPosition.y < -0.5f) {
+			this->Position.y = 0.0f;
+			HitTheWall(); }
 
-		if (currentPosition.z < -3.0f)
-			this->Position.z = -3.0f;
+		if (currentPosition.z < -3.0f) {
+			this->Position.z = 3.0f;
+			HitTheWall(); }
+
+		if (currentPosition.z > 1.0f) {
+			this->Position.z = 1.0f;
+			HitTheWall(); }		
+}
+
+void HitTheWall()
+{
+		WIce = 0.01f;
+		SIce = 0.01f;
+		DIce = 0.01f;
+		AIce = 0.01f;
 }
 
 private:

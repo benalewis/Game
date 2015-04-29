@@ -37,27 +37,26 @@ bool firstMouse = true;
 GLfloat deltaTime = 0.0f;	// Time between current frame and last frame
 GLfloat lastFrame = 0.0f;  	// Time of last frame
 
-
 int main()
 {
-    // Init GLFW & Set all the required options for GLFW
+	// Init GLFW & Set all the required options for GLFW
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-    // GLFW Window & Current Context Set
+	// GLFW Window & Current Context Set
     GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Ice Maze", nullptr, nullptr);
-    glfwMakeContextCurrent(window);
+	glfwMakeContextCurrent(window);
+
+	// Initialize GLEW to setup the OpenGL Function pointers (Using Modern Approach)
+	glewExperimental = GL_TRUE;
+	glewInit();
 
     // Callback Functions
     glfwSetKeyCallback(window, key_callback);
 	glfwSetCursorPosCallback(window, mouse_callback);
-
-    // Initialize GLEW to setup the OpenGL Function pointers (Using Modern Approach)
-    glewExperimental = GL_TRUE;
-    glewInit();
 
     // Define the viewport dimensions
     glViewport(0, 0, WIDTH, HEIGHT);
@@ -228,7 +227,7 @@ int main()
 	   glm::vec3(1.0f, 3.0f, -1.0f),
 	   glm::vec3(2.0f, 3.0f, -1.0f),
 	   glm::vec3(3.0f, 3.0f, -1.0f),
-	   //Roof
+	   //Fifth Story
 	   glm::vec3(-1.0f, 4.0f, -1.0f),
 	   glm::vec3(0.0f, 4.0f, -1.0f),
 	   glm::vec3(1.0f, 4.0f, -1.0f),
@@ -281,7 +280,6 @@ int main()
 	//Texture 2
     GLuint texture2;
     glGenTextures(1, &texture2);
-	glActiveTexture(GL_TEXTURE1); //Activate Texture (0) before binding
     glBindTexture(GL_TEXTURE_2D, texture2); 
     // Texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// Set texture wrapping to GL_REPEAT
@@ -299,7 +297,6 @@ int main()
 	//Texture 3
     GLuint texture3;
     glGenTextures(1, &texture3);
-	glActiveTexture(GL_TEXTURE2); //Activate Texture (0) before binding
     glBindTexture(GL_TEXTURE_2D, texture3); 
     // Texture parameters
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// Set texture wrapping to GL_REPEAT
@@ -308,7 +305,7 @@ int main()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);  //Mipmapping
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     // Load, create texture and generate mipmaps
-    unsigned char* image3 = SOIL_load_image("Textures/collectable.jpg", &width, &height, 0, SOIL_LOAD_RGB);
+    unsigned char* image3 = SOIL_load_image("Textures/coin.jpg", &width, &height, 0, SOIL_LOAD_RGB);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image3);
     glGenerateMipmap(GL_TEXTURE_2D);
     SOIL_free_image_data(image3);
@@ -325,7 +322,7 @@ int main()
         // Event checks and movement checks
         glfwPollEvents();
 		do_move();
-		
+
         /*-----------Render-----------*/
 		glEnable(GL_DEPTH_TEST); //Enable depth testing
         glClearColor(0.250f, 0.286f, 0.509f, 1.0f);
@@ -436,19 +433,16 @@ void do_move()
 
 	//WASD & Command Line I/O
 	if (keys[GLFW_KEY_W]) {
-         camera.ProcessKeyboard(W, deltaTime);
-		 cout << "W" << endl; }
+         camera.ProcessKeyboard(W, deltaTime);}
 	if (keys[GLFW_KEY_S]) {
-        camera.ProcessKeyboard(S, deltaTime);
-		cout << "S" << endl; }
+        camera.ProcessKeyboard(S, deltaTime);}
 	if (keys[GLFW_KEY_A]) {
-        camera.ProcessKeyboard(A, deltaTime);
-		cout << "A" << endl; }
+        camera.ProcessKeyboard(A, deltaTime);}
 	if (keys[GLFW_KEY_D]) {
-        camera.ProcessKeyboard(D, deltaTime);
-		cout << "D" << endl; }
+        camera.ProcessKeyboard(D, deltaTime);}
 
 	camera.ProcessCollision(camera.Position);
+	
 }
 
 	/*-----------Mouse Movement (Using Eular)-----------*/
@@ -468,4 +462,9 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
     lastY = ypos;
 	
 	camera.ProcessMouseMovement(xoffset, yoffset);
+}
+
+void HaveIWonYet()
+{
+
 }

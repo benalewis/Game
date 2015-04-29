@@ -9,6 +9,7 @@
 
 using namespace std;
 
+// GLEW
 #include <GL/glew.h>
 
 class Shader
