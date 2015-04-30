@@ -9,8 +9,9 @@ SOIL (Image Loading) http://www.lonesock.net/soil.html
 
 Current Builds:
 
-Mac OS X Yosemite Version 10.10.3
-Windows 8.1
+Mac OS X Yosemite Version 10.10.3 (Xcode Build)
+Windows 8.1 (Visual Studio Build)
+Linux (TBC)
 
 Marking Scheme: (TBU)
 
