@@ -1,6 +1,4 @@
-This is a OpenGL 3D Game 
-
-Currently only builds on VS2012 as far as I've tested. 
+This is a OpenGL 3D Game to serve as my assessment for the Semester 2 Games Development module as an extension of the first. 
 
 Libraries Used: 
  
@@ -9,9 +7,12 @@ GLFW (Window & I/O) http://www.glfw.org/
 GLM (Maths) http://glm.g-truc.net/0.9.6/index.html
 SOIL (Image Loading) http://www.lonesock.net/soil.html
 
-Ben Lewis 2015
+Current Builds:
 
-Semester 2 Goals
+Mac OS X Yosemite Version 10.10.3
+Windows 8.1
+
+Marking Scheme: (TBU)
 
 [X] 2 Cubes
 [X] 3 Cubes 
